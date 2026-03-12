@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Savon Bardell</title>
 
 <style>
-
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
@@ -18,47 +16,26 @@ line-height:1.7;
 position:relative;
 }
 
-/* subtle grid */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-linear-gradient(#1b1b1b 1px,transparent 1px),
-linear-gradient(90deg,#1b1b1b 1px,transparent 1px);
-background-size:42px 42px;
-opacity:.25;
-pointer-events:none;
-}
-
-/* radial glow */
-
-body::after{
-content:"";
-position:fixed;
-top:-200px;
-left:-200px;
-width:800px;
-height:800px;
-background:radial-gradient(circle,#a8ff3e22,transparent 70%);
-pointer-events:none;
-}
+/* layout */
 
 main{
 max-width:900px;
 margin:auto;
-padding:90px 30px;
+padding:100px 30px;
 text-align:center;
+position:relative;
+z-index:1;
 }
 
 /* name */
 
 h1{
-font-size:clamp(3.5rem,8vw,5.8rem);
-line-height:1;
-margin-bottom:24px;
-text-shadow:0 0 15px #a8ff3e22;
+font-size:clamp(2.8rem,6vw,4.2rem);
+font-weight:600;
+letter-spacing:.02em;
+line-height:1.05;
+margin-bottom:22px;
+text-shadow:0 0 18px #a8ff3e22;
 }
 
 /* socials */
@@ -83,7 +60,7 @@ transition:.2s;
 }
 
 .social-icons a:hover{
-transform:translateY(-2px);
+transform:translateY(-3px);
 box-shadow:0 0 14px #a8ff3ecc;
 }
 
@@ -99,10 +76,11 @@ background:#171717;
 border:1px solid #2a2a2a;
 border-radius:12px;
 padding:40px 48px;
-max-width:700px;
+max-width:720px;
 margin:auto;
-font-size:1.1rem;
+font-size:1.08rem;
 color:#ccc;
+text-align:left;
 }
 
 .intro strong{color:#fff}
@@ -116,7 +94,7 @@ text-decoration:none;
 text-shadow:0 0 8px #a8ff3ecc;
 }
 
-/* resume button */
+/* toggle button */
 
 .toggle-btn{
 margin-top:30px;
@@ -143,19 +121,19 @@ box-shadow:0 0 12px #a8ff3e88;
 
 .toggle-btn.open .arrow{transform:rotate(180deg)}
 
-/* resume section */
+/* resume animation */
 
 .resume-section{
-overflow:hidden;
 max-height:0;
 opacity:0;
-transition:.5s;
-margin-top:30px;
+overflow:hidden;
+transition:max-height .7s cubic-bezier(.19,1,.22,1),opacity .4s ease;
 }
 
 .resume-section.open{
 max-height:5000px;
 opacity:1;
+margin-top:40px;
 }
 
 /* cards */
@@ -178,9 +156,30 @@ color:#666;
 margin-bottom:24px;
 }
 
-.entry{margin-bottom:20px}
-.entry-title{font-weight:600;color:#fff}
-.entry-sub{color:#888;font-style:italic}
+.entry{margin-bottom:18px}
+
+.entry-title{
+font-weight:600;
+color:#fff;
+margin-bottom:2px;
+}
+
+.entry-sub{
+color:#888;
+font-style:italic;
+font-size:.9rem;
+}
+
+ul{
+margin-top:10px;
+padding-left:18px;
+}
+
+li{
+color:#aaa;
+font-size:.92rem;
+margin-bottom:6px;
+}
 
 hr{
 border:none;
@@ -221,22 +220,7 @@ margin:24px 0;
 
 <div class="intro">
 
-<p>
-I build <strong>systems, infrastructure, and data pipelines</strong> that help organizations move faster and make smarter decisions.
-</p>
-
-<br>
-
-<p>
-Currently at <a href="https://kqed.org">KQED</a> where I manage operational infrastructure for a $7–9M membership program.
-Previously at <a href="https://berkeley.edu">UC Berkeley</a> and <a href="https://pear.vc">Pear VC</a>.
-</p>
-
-<br>
-
-<p>
-I work at the intersection of <strong>operations, data, and product</strong> — building systems that make organizations run.
-</p>
+<p>Hi! My name is <strong>Savon</strong>. I volunteer at the Oakland Museum doing gallery chats. When I’m not volunteering, I build systems, infrastructure, and data pipelines that help organizations run smoothly.</p>
 
 <button class="toggle-btn" onclick="toggleResume(this)">
 📄 View Resume <span class="arrow">▼</span>
@@ -246,20 +230,109 @@ I work at the intersection of <strong>operations, data, and product</strong> —
 
 <div class="resume-section" id="resume-section">
 
+<!-- Education -->
+
 <div class="card">
+
 <div class="section-label">Education</div>
 
 <div class="entry">
-<div class="entry-title">UC Berkeley</div>
-<div class="entry-sub">BA Rhetoric — Policy Focus</div>
+<div class="entry-title">University of California, Berkeley</div>
+<div class="entry-sub">Bachelor of Arts, Rhetoric (Policy Focus)</div>
 </div>
 
 <hr>
 
 <div class="entry">
 <div class="entry-title">King's College London</div>
-<div class="entry-sub">Postgraduate Certificate — Critical Theory & Policy</div>
+<div class="entry-sub">Postgraduate Certificate, Critical Theory & Policy</div>
 </div>
+
+</div>
+
+<!-- Skills -->
+
+<div class="card">
+
+<div class="section-label">Skills</div>
+
+<p><strong>Systems & Operational Infrastructure:</strong> CRM (ROI Solutions, Salesforce), workflow design (Asana, Jira), knowledge systems (Notion, Airtable), Marketing Platforms (Engaging Networks, Marketing Cloud).</p>
+
+<br>
+
+<p><strong>Data & Performance Measurement:</strong> SQL queries, Google Data Studio, KPI design, executive reporting dashboards.</p>
+
+<br>
+
+<p><strong>Automation & Workflow Optimization:</strong> Python, Zapier, GitHub, AI-assisted workflow design.</p>
+
+<br>
+
+<p><strong>Digital & Communications Tools:</strong> HTML/CSS, WordPress, Adobe Creative Suite.</p>
+
+</div>
+
+<!-- Experience -->
+
+<div class="card">
+
+<div class="section-label">Experience</div>
+
+<div class="entry">
+
+<div class="entry-title">Development Operations Manager</div>
+<div class="entry-sub">KQED — San Francisco · Nov 2024–Present</div>
+
+<ul>
+<li>Owned operational and data infrastructure for a 9000 member program generating $7–9M annually.</li>
+<li>Built automated Asana work management systems for seven officers.</li>
+<li>Launched a new giving channel generating $100K revenue.</li>
+<li>Managed analysis across 600-donor portfolios using SQL and Excel models.</li>
+<li>Authored department AI governance SOP.</li>
+</ul>
+
+</div>
+
+<hr>
+
+<div class="entry">
+
+<div class="entry-title">Program Manager</div>
+<div class="entry-sub">Masters of Computational Social Science, UC Berkeley</div>
+
+<ul>
+<li>Architected evaluation system selecting 200–300 applicants per cycle.</li>
+<li>Built infrastructure across Slate, Airtable, and Excel.</li>
+<li>Led applicant communications and webinars.</li>
+</ul>
+
+</div>
+
+<hr>
+
+<div class="entry">
+
+<div class="entry-title">Program Manager</div>
+<div class="entry-sub">Institute for Business & Social Impact, UC Berkeley</div>
+
+<ul>
+<li>Scaled program revenue from $400K → $1.2M.</li>
+<li>Built recruiting, payroll, onboarding infrastructure for ~24 staff.</li>
+</ul>
+
+</div>
+
+<hr>
+
+<div class="entry">
+
+<div class="entry-title">Marketing Coordinator</div>
+<div class="entry-sub">Pear VC</div>
+
+<ul>
+<li>Produced events including Demo Day at Filoli Estate.</li>
+<li>Supported portfolio startups building operational systems.</li>
+</ul>
 
 </div>
 
@@ -267,27 +340,21 @@ I work at the intersection of <strong>operations, data, and product</strong> —
 
 </main>
 
-<<script>
-
+<script>
+/* resume toggle */
 function toggleResume(btn){
-
-var section=document.getElementById("resume-section")
-
-var open=section.classList.contains("open")
-
-if(open){
-section.classList.remove("open")
-btn.classList.remove("open")
-}
-else{
-section.classList.add("open")
-btn.classList.add("open")
+  var section=document.getElementById("resume-section")
+  var open=section.classList.contains("open")
+  if(open){
+    section.classList.remove("open")
+    btn.classList.remove("open")
+  } else{
+    section.classList.add("open")
+    btn.classList.add("open")
+  }
 }
 
-}
-
-/* cursor glow effect */
-
+/* cursor glow */
 const glow=document.createElement("div")
 glow.style.position="fixed"
 glow.style.width="600px"
@@ -296,16 +363,11 @@ glow.style.pointerEvents="none"
 glow.style.background="radial-gradient(circle,#a8ff3e33 0%,transparent 60%)"
 glow.style.transform="translate(-50%,-50%)"
 glow.style.zIndex="0"
-glow.style.transition="opacity .2s"
 document.body.appendChild(glow)
-
 document.addEventListener("mousemove",(e)=>{
-glow.style.left=e.clientX+"px"
-glow.style.top=e.clientY+"px"
+  glow.style.left=e.clientX+"px"
+  glow.style.top=e.clientY+"px"
 })
-
-</script>
-
 </script>
 
 </body>
