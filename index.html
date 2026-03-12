@@ -17,7 +17,6 @@ position:relative;
 }
 
 /* layout */
-
 main{
 max-width:900px;
 margin:auto;
@@ -28,7 +27,6 @@ z-index:1;
 }
 
 /* name */
-
 h1{
 font-size:clamp(2.8rem,6vw,4.2rem);
 font-weight:600;
@@ -39,14 +37,12 @@ text-shadow:0 0 18px #a8ff3e22;
 }
 
 /* socials */
-
 .social-icons{
 display:flex;
 justify-content:center;
 gap:16px;
 margin-bottom:40px;
 }
-
 .social-icons a{
 width:42px;
 height:42px;
@@ -58,19 +54,16 @@ justify-content:center;
 color:#111;
 transition:.2s;
 }
-
 .social-icons a:hover{
 transform:translateY(-3px);
 box-shadow:0 0 14px #a8ff3ecc;
 }
-
 .social-icons svg{
 width:20px;
 height:20px;
 }
 
 /* intro card */
-
 .intro{
 background:#171717;
 border:1px solid #2a2a2a;
@@ -82,20 +75,16 @@ font-size:1.08rem;
 color:#ccc;
 text-align:left;
 }
-
 .intro strong{color:#fff}
-
 .intro a{
 color:#a8ff3e;
 text-decoration:none;
 }
-
 .intro a:hover{
 text-shadow:0 0 8px #a8ff3ecc;
 }
 
 /* toggle button */
-
 .toggle-btn{
 margin-top:30px;
 display:inline-flex;
@@ -110,26 +99,21 @@ font-family:sans-serif;
 cursor:pointer;
 transition:.2s;
 }
-
 .toggle-btn:hover{
 color:#a8ff3e;
 border-color:#a8ff3e;
 box-shadow:0 0 12px #a8ff3e88;
 }
-
 .toggle-btn .arrow{transition:.3s}
-
 .toggle-btn.open .arrow{transform:rotate(180deg)}
 
 /* resume animation */
-
 .resume-section{
 max-height:0;
 opacity:0;
 overflow:hidden;
 transition:max-height .7s cubic-bezier(.19,1,.22,1),opacity .4s ease;
 }
-
 .resume-section.open{
 max-height:5000px;
 opacity:1;
@@ -137,7 +121,6 @@ margin-top:40px;
 }
 
 /* cards */
-
 .card{
 background:#171717;
 border:1px solid #2a2a2a;
@@ -145,7 +128,20 @@ border-radius:10px;
 padding:36px 40px;
 margin-top:24px;
 text-align:left;
+opacity:0;
+transform:translateY(12px);
+transition:opacity .6s ease, transform .6s ease;
 }
+.resume-section.open .card{
+opacity:1;
+transform:translateY(0);
+}
+
+/* fade-in stagger effect */
+.card:nth-child(1){transition-delay:0.05s;}
+.card:nth-child(2){transition-delay:0.1s;}
+.card:nth-child(3){transition-delay:0.15s;}
+.card:nth-child(4){transition-delay:0.2s;}
 
 .section-label{
 font-family:sans-serif;
@@ -157,36 +153,30 @@ margin-bottom:24px;
 }
 
 .entry{margin-bottom:18px}
-
 .entry-title{
 font-weight:600;
 color:#fff;
 margin-bottom:2px;
 }
-
 .entry-sub{
 color:#888;
 font-style:italic;
 font-size:.9rem;
 }
-
 ul{
 margin-top:10px;
 padding-left:18px;
 }
-
 li{
 color:#aaa;
 font-size:.92rem;
 margin-bottom:6px;
 }
-
 hr{
 border:none;
 border-top:1px solid #2a2a2a;
 margin:24px 0;
 }
-
 </style>
 </head>
 
@@ -197,7 +187,6 @@ margin:24px 0;
 <h1>Savon Bardell</h1>
 
 <div class="social-icons">
-
 <a href="mailto:savon@berkeley.edu">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M2 4h20v16H2V4zm10 7L3.5 5h17L12 11zm0 2L3 7v11h18V7l-9 6z"/>
@@ -215,74 +204,48 @@ margin:24px 0;
 <path d="M12 .5A12 12 0 000 12.7c0 5.5 3.6 10.1 8.6 11.8.6.1.8-.3.8-.6v-2.3c-3.5.8-4.3-1.7-4.3-1.7-.6-1.6-1.4-2-1.4-2-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 2 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7-2.8-.3-5.8-1.4-5.8-6.2 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.6 0 0 1-.3 3.6 1.3A12.3 12.3 0 0112 6.7c1.1 0 2.3.2 3.4.7 2.6-1.6 3.6-1.3 3.6-1.3.7 1.9.2 3.3.1 3.6.8.9 1.3 2.1 1.3 3.5 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6A12.2 12.2 0 0024 12.7 12.2 12.2 0 0012 .5z"/>
 </svg>
 </a>
-
 </div>
 
 <div class="intro">
-
-<p>Hi! My name is <strong>Savon</strong>. I volunteer at the Oakland Museum doing gallery chats. When I’m not volunteering, I build systems, infrastructure, and data pipelines that help organizations run smoothly.</p>
+<p>My name is <strong>Savon Bardell</strong> and I work as a Dev Operations Manager at <a href="https://kqed.org">KQED</a>. When I’m not working, I volunteer at the Oakland Museum of CA leading gallery chats as a way to channel my passion for art. You can find me on <a href="https://linkedin.com/in/savon" target="_blank">LinkedIn</a> or check out my resume below.</p>
 
 <button class="toggle-btn" onclick="toggleResume(this)">
 📄 View Resume <span class="arrow">▼</span>
 </button>
-
 </div>
 
 <div class="resume-section" id="resume-section">
 
 <!-- Education -->
-
 <div class="card">
-
 <div class="section-label">Education</div>
-
 <div class="entry">
 <div class="entry-title">University of California, Berkeley</div>
 <div class="entry-sub">Bachelor of Arts, Rhetoric (Policy Focus)</div>
 </div>
-
 <hr>
-
 <div class="entry">
 <div class="entry-title">King's College London</div>
 <div class="entry-sub">Postgraduate Certificate, Critical Theory & Policy</div>
 </div>
-
 </div>
 
 <!-- Skills -->
-
 <div class="card">
-
 <div class="section-label">Skills</div>
-
 <p><strong>Systems & Operational Infrastructure:</strong> CRM (ROI Solutions, Salesforce), workflow design (Asana, Jira), knowledge systems (Notion, Airtable), Marketing Platforms (Engaging Networks, Marketing Cloud).</p>
-
-<br>
-
 <p><strong>Data & Performance Measurement:</strong> SQL queries, Google Data Studio, KPI design, executive reporting dashboards.</p>
-
-<br>
-
 <p><strong>Automation & Workflow Optimization:</strong> Python, Zapier, GitHub, AI-assisted workflow design.</p>
-
-<br>
-
 <p><strong>Digital & Communications Tools:</strong> HTML/CSS, WordPress, Adobe Creative Suite.</p>
-
 </div>
 
 <!-- Experience -->
-
 <div class="card">
-
 <div class="section-label">Experience</div>
 
 <div class="entry">
-
 <div class="entry-title">Development Operations Manager</div>
 <div class="entry-sub">KQED — San Francisco · Nov 2024–Present</div>
-
 <ul>
 <li>Owned operational and data infrastructure for a 9000 member program generating $7–9M annually.</li>
 <li>Built automated Asana work management systems for seven officers.</li>
@@ -290,50 +253,40 @@ margin:24px 0;
 <li>Managed analysis across 600-donor portfolios using SQL and Excel models.</li>
 <li>Authored department AI governance SOP.</li>
 </ul>
-
 </div>
 
 <hr>
 
 <div class="entry">
-
 <div class="entry-title">Program Manager</div>
 <div class="entry-sub">Masters of Computational Social Science, UC Berkeley</div>
-
 <ul>
 <li>Architected evaluation system selecting 200–300 applicants per cycle.</li>
 <li>Built infrastructure across Slate, Airtable, and Excel.</li>
 <li>Led applicant communications and webinars.</li>
 </ul>
-
 </div>
 
 <hr>
 
 <div class="entry">
-
 <div class="entry-title">Program Manager</div>
 <div class="entry-sub">Institute for Business & Social Impact, UC Berkeley</div>
-
 <ul>
 <li>Scaled program revenue from $400K → $1.2M.</li>
 <li>Built recruiting, payroll, onboarding infrastructure for ~24 staff.</li>
 </ul>
-
 </div>
 
 <hr>
 
 <div class="entry">
-
 <div class="entry-title">Marketing Coordinator</div>
 <div class="entry-sub">Pear VC</div>
-
 <ul>
 <li>Produced events including Demo Day at Filoli Estate.</li>
 <li>Supported portfolio startups building operational systems.</li>
 </ul>
-
 </div>
 
 </div>
