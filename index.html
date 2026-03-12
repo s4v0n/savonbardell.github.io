@@ -267,7 +267,7 @@ I work at the intersection of <strong>operations, data, and product</strong> —
 
 </main>
 
-<script>
+<<script>
 
 function toggleResume(btn){
 
@@ -285,6 +285,26 @@ btn.classList.add("open")
 }
 
 }
+
+/* cursor glow effect */
+
+const glow=document.createElement("div")
+glow.style.position="fixed"
+glow.style.width="600px"
+glow.style.height="600px"
+glow.style.pointerEvents="none"
+glow.style.background="radial-gradient(circle,#a8ff3e33 0%,transparent 60%)"
+glow.style.transform="translate(-50%,-50%)"
+glow.style.zIndex="0"
+glow.style.transition="opacity .2s"
+document.body.appendChild(glow)
+
+document.addEventListener("mousemove",(e)=>{
+glow.style.left=e.clientX+"px"
+glow.style.top=e.clientY+"px"
+})
+
+</script>
 
 </script>
 
