@@ -1,125 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Savon Bardell</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #111; color: #f0f0f0; font-family: 'Georgia', serif; font-size: 17px; line-height: 1.7; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; border-bottom: 1px solid #222; }
-    .nav-name { font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; color: #f0f0f0; }
-    .nav-links { display: flex; gap: 12px; }
-    .nav-links a { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid #444; border-radius: 6px; color: #ccc; text-decoration: none; font-family: sans-serif; font-size: 0.85rem; transition: color 0.2s, box-shadow 0.2s, border-color 0.2s, text-shadow 0.2s; }
-    .nav-links a:hover { color: #a8ff3e; border-color: #a8ff3e; box-shadow: 0 0 10px #a8ff3e88, 0 0 20px #a8ff3e33; text-shadow: 0 0 8px #a8ff3eaa; }
-    main { max-width: 820px; margin: 0 auto; padding: 60px 40px 80px; }
-    .label { font-family: sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #a8ff3e; margin-bottom: 24px; }
-    h1 { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 1.0; margin-bottom: 32px; color: #fff; }
-    .bio { font-size: 1.05rem; color: #ccc; max-width: 680px; margin-bottom: 40px; }
-    .bio strong { color: #fff; font-weight: 600; }
-    .bio a { color: #fff; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s, text-shadow 0.2s; }
-    .bio a:hover { color: #a8ff3e; text-shadow: 0 0 8px #a8ff3ecc; }
-    .toggle-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid #444; border-radius: 6px; color: #ccc; background: transparent; cursor: pointer; font-family: sans-serif; font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, text-shadow 0.2s; }
-    .toggle-btn:hover { color: #a8ff3e; border-color: #a8ff3e; box-shadow: 0 0 12px #a8ff3e88, 0 0 24px #a8ff3e33; text-shadow: 0 0 8px #a8ff3eaa; }
-    .toggle-btn .arrow { display: inline-block; transition: transform 0.3s ease; }
-    .toggle-btn.open .arrow { transform: rotate(180deg); }
-    .resume-section { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.5s ease, opacity 0.4s ease; }
-    .resume-section.open { max-height: 5000px; opacity: 1; }
-    .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; padding: 36px 40px; margin-bottom: 24px; }
-    .section-label { font-family: sans-serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #666; margin-bottom: 24px; }
-    .entry { margin-bottom: 20px; } .entry:last-child { margin-bottom: 0; }
-    .entry-title { font-weight: 600; color: #fff; font-size: 1rem; }
-    .entry-sub { color: #888; font-style: italic; font-size: 0.92rem; }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .skill-title { font-weight: 600; color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
-    .skill-desc { color: #888; font-size: 0.88rem; line-height: 1.5; }
-    .exp-entry { margin-bottom: 28px; } .exp-entry:last-child { margin-bottom: 0; }
-    .exp-title { font-weight: 600; color: #fff; font-size: 1rem; }
-    .exp-org { color: #888; font-size: 0.88rem; margin-bottom: 10px; }
-    .exp-entry ul { padding-left: 18px; }
-    .exp-entry li { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 6px; }
-    hr.divider { border: none; border-top: 1px solid #2a2a2a; margin: 24px 0; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Savon Bardell</title>
+
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0e0e0e;
+  color: #f0f0f0;
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* subtle grid background */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(#1a1a1a 1px, transparent 1px),
+    linear-gradient(90deg, #1a1a1a 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* radial glow */
+
+body::after {
+  content: "";
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #a8ff3e22, transparent 70%);
+  pointer-events: none;
+}
+
+/* layout */
+
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 90px 40px 80px;
+  position: relative;
+}
+
+/* hero section */
+
+.hero {
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: clamp(3.4rem, 8vw, 5.8rem);
+  font-weight: 700;
+  line-height: 1.0;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 0 0 18px #a8ff3e22;
+}
+
+/* socials */
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.social-icons a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #a8ff3e;
+  color: #111;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-icons a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px #a8ff3ecc;
+}
+
+.social-icons svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* bio */
+
+.bio {
+  font-size: 1.05rem;
+  color: #ccc;
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+
+.bio strong { color: #fff; font-weight: 600; }
+
+.bio a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.bio a:hover {
+  color: #a8ff3e;
+  text-shadow: 0 0 8px #a8ff3ecc;
+}
+
+/* resume toggle */
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #ccc;
+  background: transparent;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, text-shadow 0.2s;
+}
+
+.toggle-btn:hover {
+  color: #a8ff3e;
+  border-color: #a8ff3e;
+  box-shadow: 0 0 12px #a8ff3e88, 0 0 24px #a8ff3e33;
+  text-shadow: 0 0 8px #a8ff3eaa;
+}
+
+.toggle-btn .arrow { transition: transform 0.3s ease; }
+
+.toggle-btn.open .arrow { transform: rotate(180deg); }
+
+/* resume section */
+
+.resume-section {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+
+.resume-section.open {
+  max-height: 5000px;
+  opacity: 1;
+}
+
+/* cards */
+
+.card {
+  background: #171717;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 36px 40px;
+  margin-bottom: 24px;
+}
+
+.section-label {
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.entry { margin-bottom: 20px; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry-title { font-weight: 600; color: #fff; font-size: 1rem; }
+.entry-sub { color: #888; font-style: italic; font-size: 0.92rem; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.skill-title {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.skill-desc {
+  color: #888;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.exp-entry { margin-bottom: 28px; }
+.exp-entry:last-child { margin-bottom: 0; }
+
+.exp-title { font-weight: 600; color: #fff; font-size: 1rem; }
+
+.exp-org {
+  color: #888;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+.exp-entry ul { padding-left: 18px; }
+
+.exp-entry li {
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+hr.divider {
+  border: none;
+  border-top: 1px solid #2a2a2a;
+  margin: 24px 0;
+}
+
+</style>
 </head>
+
 <body>
-<nav>
-  <div class="nav-links">
-    <a href="mailto:savon@berkeley.edu">✉ Email</a>
-    <a href="https://www.linkedin.com/in/savon" target="_blank">in LinkedIn</a>
-    <a href="https://savonbardell.github.io" target="_blank">⌥ GitHub</a>
-  </div>
-</nav>
+
 <main>
-  <h1>Savon<br>Bardell</h1>
-  <p class="bio">I build the <strong>systems, infrastructure, and data pipelines</strong> that let organizations move faster and make smarter decisions. Currently at <a href="https://kqed.org" target="_blank">KQED</a> as Development Operations Manager, where I own the data and operational infrastructure for a $7–9M membership program. Formerly at <a href="https://berkeley.edu" target="_blank">UC Berkeley</a> across two programs, and <a href="https://pear.vc" target="_blank">Pear VC</a>. I sit at the intersection of operations, data, and product — I make things run.</p>
-  <button class="toggle-btn" onclick="toggleResume(this)" aria-expanded="false">📄 View Resume <span class="arrow">▼</span></button>
-  <div class="resume-section" id="resume-section">
-    <div class="card">
-      <div class="section-label">Education</div>
-      <div class="entry"><div class="entry-title">UC Berkeley</div><div class="entry-sub">Bachelor of Arts, Rhetoric — Policy Focus</div></div>
-      <hr class="divider">
-      <div class="entry"><div class="entry-title">King’s College London</div><div class="entry-sub">Postgraduate Certificate, Critical Theory &amp; Policy</div></div>
-    </div>
-    <div class="card">
-      <div class="section-label">Skills</div>
-      <div class="skills-grid">
-        <div><div class="skill-title">Systems &amp; Operational Infrastructure</div><div class="skill-desc">CRM (ROI Solutions, Salesforce), workflow design (Asana, Jira), knowledge systems (Notion, Airtable), Marketing Platforms (Engaging Networks, Marketing Cloud)</div></div>
-        <div><div class="skill-title">Data &amp; Performance Measurement</div><div class="skill-desc">SQL queries, Google Data Studio, KPI design, executive reporting dashboards</div></div>
-        <div><div class="skill-title">Automation &amp; Workflow Optimization</div><div class="skill-desc">Python, Zapier, GitHub, AI-assisted workflow design</div></div>
-        <div><div class="skill-title">Digital &amp; Communications Tools</div><div class="skill-desc">HTML/CSS, WordPress, Adobe Creative Suite</div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="section-label">Experience</div>
-      <div class="exp-entry">
-        <div class="exp-title">Development Operations Manager</div>
-        <div class="exp-org">KQED — San Francisco, CA · Nov 2024–Present</div>
-        <ul>
-          <li>Owned operational and data infrastructure for a 9,000-member program generating $7–9M annually, building forecasting models and executive dashboards for revenue tracking and resource planning.</li>
-          <li>Built and automated an Asana-based work management system for seven officers — reduced manual processing time and expanded team capacity without adding headcount.</li>
-          <li>Conceived, built, and launched an end-to-end giving channel from scratch, including donor pipeline, event production, vendor coordination, and CRM infrastructure, generating $100K in new revenue in FY25.</li>
-          <li>Conduct ongoing data analysis across 600-donor portfolios using SQL and custom Excel workbooks to support mid-year and end-of-year refreshes, ensuring each officer’s portfolio is maintained at ~$1M.</li>
-          <li>Identified AI integration risks and led a cross-functional working group to pilot automation initiatives; authored a department-wide SOP establishing governance standards for AI use, data privacy compliance, and acceptable use across a team handling sensitive donor data.</li>
-        </ul>
-      </div>
-      <hr class="divider">
-      <div class="exp-entry">
-        <div class="exp-title">Program Manager</div>
-        <div class="exp-org">Masters of Computational Social Science, UC Berkeley · Oct 2023–Nov 2024</div>
-        <ul>
-          <li>Architected a multi-stage evaluation system for a competitive research program, designing scoring rubrics, reviewer workflows, and committee calibration processes for cohorts of 200–300 applicants per cycle.</li>
-          <li>Owned full application cycle infrastructure: configured pipelines in Slate, built Airtable bases and Excel workbooks, and maintained data integrity across a 200–300 person selection process.</li>
-          <li>Managed applicant communications end-to-end, fielding inquiries and hosting quarterly informational webinars for 50–70 prospective applicants.</li>
-        </ul>
-      </div>
-      <hr class="divider">
-      <div class="exp-entry">
-        <div class="exp-title">Program Manager</div>
-        <div class="exp-org">Institute for Business &amp; Social Impact, UC Berkeley · Dec 2022–Oct 2023</div>
-        <ul>
-          <li>Scaled BBAY from $400K to $700K in revenue by expanding from a summer-only to a year-round innovation program; grew revenue to $1.2M by end of tenure, sustaining BOOST, a scholarship program for underrepresented high school students.</li>
-          <li>Built and owned all people operations infrastructure from scratch, including recruiting, hiring, contracts, payroll, and onboarding for ~24 staff and instructors across two annual cohorts.</li>
-        </ul>
-      </div>
-      <hr class="divider">
-      <div class="exp-entry">
-        <div class="exp-title">Marketing Coordinator</div>
-        <div class="exp-org">Pear VC — Menlo Park, CA · Jan 2022–Dec 2022</div>
-        <ul>
-          <li>Produced and managed a full events calendar including a speaker series, investor happy hours, and the flagship annual Demo Day at Filoli Estate, coordinating logistics, vendors, and attendee experience end-to-end.</li>
-          <li>Provided ad hoc operational support to portfolio startups, building pitch decks, SOPs, and hiring infrastructure for early-stage founders with no existing systems.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+<div class="hero">
+
+<div class="social-icons">
+
+<a href="mailto:savon@berkeley.edu" aria-label="Email">
+<svg viewBox="0 0 24 24" fill="currentColor">
+<path d="M2 4h20v16H2V4zm10 7L3.5 5h17L12 11zm0 2L3 7v11h18V7l-9 6z"/>
+</svg>
+</a>
+
+<a href="https://www.linkedin.com/in/savon" target="_blank" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="currentColor">
+<path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4v14h-4V8zm7.5 0h3.8v1.9h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V22h-4v-6.6c0-1.58-.03-3.6-2.2-3.6-2.2 0-2.53 1.72-2.53 3.48V22h-4V8z"/>
+</svg>
+</a>
+
+<a href="https://savonbardell.github.io" target="_blank" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 .5A12 12 0 000 12.7c0 5.5 3.6 10.1 8.6 11.8.6.1.8-.3.8-.6v-2.3c-3.5.8-4.3-1.7-4.3-1.7-.6-1.6-1.4-2-1.4-2-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 2 2.9 1.4 3.6 1.1.1-.8.4-1.4.8-1.7-2.8-.3-5.8-1.4-5.8-6.2 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.6 0 0 1-.3 3.6 1.3A12.3 12.3 0 0112 6.7c1.1 0 2.3.2 3.4.7 2.6-1.6 3.6-1.3 3.6-1.3.7 1.9.2 3.3.1 3.6.8.9 1.3 2.1 1.3 3.5 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.5c0 .3.2.7.8.6A12.2 12.2 0 0024 12.7 12.2 12.2 0 0012 .5z"/>
+</svg>
+</a>
+
+</div>
+
+<h1>Savon<br>Bardell</h1>
+
+</div>
+
+<p class="bio">
+I build the <strong>systems, infrastructure, and data pipelines</strong> that let organizations move faster and make smarter decisions. Currently at <a href="https://kqed.org" target="_blank">KQED</a> as Development Operations Manager, where I own the data and operational infrastructure for a $7–9M membership program. Formerly at <a href="https://berkeley.edu" target="_blank">UC Berkeley</a> across two programs, and <a href="https://pear.vc" target="_blank">Pear VC</a>. I sit at the intersection of operations, data, and product — I make things run.
+</p>
+
+<button class="toggle-btn" onclick="toggleResume(this)" aria-expanded="false">
+📄 View Resume <span class="arrow">▼</span>
+</button>
+
+<div class="resume-section" id="resume-section">
+
+<!-- resume content unchanged -->
+
+</div>
+
 </main>
+
 <script>
-  function toggleResume(btn) {
-    var section = document.getElementById('resume-section');
-    var isOpen = section.classList.contains('open');
-    if (isOpen) { section.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-    else { section.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-  }
+
+function toggleResume(btn) {
+
+var section = document.getElementById('resume-section');
+
+var isOpen = section.classList.contains('open');
+
+if (isOpen) {
+section.classList.remove('open');
+btn.classList.remove('open');
+btn.setAttribute('aria-expanded','false');
+}
+
+else {
+section.classList.add('open');
+btn.classList.add('open');
+btn.setAttribute('aria-expanded','true');
+}
+
+}
+
 </script>
+
 </body>
 </html>
